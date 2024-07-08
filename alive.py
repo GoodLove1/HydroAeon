@@ -10,7 +10,7 @@ try:
     BASE_URL = BASE_URL.rstrip("/")
 except TypeError:
     BASE_URL = None
-PORT = os.environ.get('PORT', None)
+PORT = 80
 if PORT is not None and BASE_URL is not None:
     while True:
         try:
