@@ -7,7 +7,7 @@ from dotenv import load_dotenv, dotenv_values
 from threading import Thread
 from time import sleep, time
 from subprocess import Popen, run as srun, check_output
-from os import remove as osremove, path as ospath, environ
+from os import remove as osremove, path as ospath, environ, getcwd
 from aria2p import API as ariaAPI, Client as ariaClient
 from qbittorrentapi import Client as qbClient
 from faulthandler import enable as faulthandler_enable
@@ -392,7 +392,7 @@ if ospath.exists('shorteners.txt'):
             if len(temp) == 2:
                 shorteners_list.append({'domain': temp[0],'api_key': temp[1]})
 
-PORT = environ.get('PORT')
+PORT = 80
 Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT} --worker-class gevent", shell=True)
 
 
